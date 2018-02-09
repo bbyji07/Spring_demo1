@@ -27,6 +27,6 @@ RUN apt-get update -y && \
     cd notificationapp && \
     mvn clean install && \
     rm -rf /var/lib/tomcat8/webapps/ROOT && \
-    mv target notificationapp-0.0.1-SNAPSHOT.war /var/lib/tomcat8/webapps/ROOT.war
+    mv target/notificationapp-0.0.1-SNAPSHOT.war /var/lib/tomcat8/webapps/ROOT.war
 
 EXPOSE 8080
