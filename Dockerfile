@@ -22,7 +22,11 @@ MAINTAINER Ramakrishna Thandra <ramakrishna.thandra@gmail.com>
 
 #COPY THE ARTIFACTS
 RUN apt-get update -y && \
-    apt-get install -y openssh-client git &&
+    apt-get install -y openssh-client git && \
     git clone https://github.com/learnkarts/notificationapp.git && \
     cd notificationapp && \
-    mvn clean install
+    mvn clean install && \
+    rm -rf /var/lib/tomcat8/webapps/ROOT && \
+    mv target notificationapp-0.0.1-SNAPSHOT.war /var/lib/tomcat8/webapps/ROOT
+
+EXPOSE 8080
