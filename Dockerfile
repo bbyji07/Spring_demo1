@@ -26,7 +26,13 @@ RUN apt-get update -y && \
     git clone https://github.com/learnkarts/notificationapp.git && \
     cd notificationapp && \
     mvn clean install && \
-    rm -rf /var/lib/tomcat8/webapps/ROOT && \
-    mv target/notificationapp-0.0.1-SNAPSHOT.war /var/lib/tomcat8/webapps/ROOT.war
+    mv target/notificationapp-0.0.1-SNAPSHOT target/ROOT && \
+    mv target/ROOT /opt/tomcat/
 
+#EXPOSING THE PORTS
 EXPOSE 8080
+
+EXPOSE 8009
+
+# Launch Tomcat
+CMD ["/opt/tomcat/bin/catalina.sh", "run"]
